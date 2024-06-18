@@ -4,6 +4,25 @@ import Navbar from "@/components/Navbar.astro";
 const { title, description } = Astro.props;
 ---
 
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+  window.localStorage.setItem("theme", theme);
+</script>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -16,12 +35,8 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>Site Name | {title}</title>
   </head>
-  <body
-    class="antialiased"
-    x-data="{'darkMode': localStorage.getItem('darkMode') ? JSON.parse(localStorage.getItem('darkMode')) : true }"
-    x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-  >
-    <div :class="{'dark': darkMode === true}">
+  <body class="antialiased">
+    <div>
       <div>
         <Navbar />
       </div>
