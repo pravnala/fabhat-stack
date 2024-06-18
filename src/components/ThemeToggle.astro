@@ -1,0 +1,10 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<template x-if="true">
+  <button @click="darkMode = !darkMode">
+    <Icon name="sun" class="w-6 h-6 dark:text-white" x-show="darkMode" />
+    <Icon name="moon" class="w-6 h-6 dark:text-white" x-show="!darkMode" />
+  </button>
+</template>

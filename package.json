@@ -10,10 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.7.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@iconify/json": "^2.2.220",
+    "@types/alpinejs": "^3.13.10",
+    "alpinejs": "^3.14.0",
     "astro": "^4.10.2",
     "astro-htmx": "^1.0.6",
+    "astro-icon": "^1.1.0",
     "flowbite": "^2.3.0",
     "htmx.org": "^1.9.12",
     "prettier": "^3.3.2",
